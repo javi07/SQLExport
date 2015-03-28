@@ -1,0 +1,13 @@
+
+Declare @qry varchar(200),@cmd varchar(200)   
+Declare @pat varchar(200)
+Declare @file varchar(200)
+Declare @fileextension varchar(10)
+
+
+SET @qry = 'SELECT * FROM BD.dbo.Table'                                 
+                                                       
+SET @cmd = 'bcp "' + @qry +'" queryout '+ @pat + @file + @fileextension +' -c -T -t"|"'                                                      
+EXEC master..xp_cmdshell @cmd   
+
+
